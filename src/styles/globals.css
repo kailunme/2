@@ -111,10 +111,11 @@ a:hover { color: var(--ua-link-hover); }
 .site-grid {
   display: grid;
   grid-template-columns: 210px 1fr 290px;
-  gap: 18px;
+  column-gap: 36px;
+  row-gap: 18px;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 24px 20px 48px;
+  padding: 24px 40px 48px;
   align-items: start;
 }
 
@@ -143,7 +144,7 @@ a:hover { color: var(--ua-link-hover); }
 @media (max-width: 700px) {
   .site-grid {
     grid-template-columns: 1fr;
-    padding: 12px 12px 48px;
+    padding: 24px 40px 48px;
     gap: 12px;
   }
   .col-left  { grid-column: 1; grid-row: 1; }
