@@ -5,11 +5,13 @@ import { ClientRouter } from 'astro:transitions';
 interface Props {
   title?: string;
   description?: string;
+  lang?: string;
 }
 
 const {
   title = 'u n i c o d e a n g e l',
   description = 'A digital space blending the digital with the organic.',
+  lang,
 } = Astro.props;
 ---
 
@@ -30,7 +32,20 @@ const {
     />
     <ClientRouter />
   </head>
-  <body class="ua-body">
+  <body class="ua-body" data-lang={lang}>
     <slot />
   </body>
+  <script>
+    function applyLang() {
+      const path = window.location.pathname;
+      if (path.startsWith('/zh')) {
+        document.body.setAttribute('data-lang', 'zh');
+      } else if (path.startsWith('/ja')) {
+        document.body.setAttribute('data-lang', 'ja');
+      } else {
+        document.body.removeAttribute('data-lang');
+      }
+    }
+    document.addEventListener('astro:after-swap', applyLang);
+  </script>
 </html>

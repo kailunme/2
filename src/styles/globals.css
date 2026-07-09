@@ -22,6 +22,21 @@
   src: url('/fonts/SFTelegraphicLight.ttf') format('truetype');
   font-display: swap;
 }
+@font-face {
+  font-family: 'Iosevka';
+  src: url('/fonts/iosevka-regular.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Zpix';
+  src: url('/fonts/zpix.ttf') format('truetype');
+  font-weight: 400;
+  font-display: swap;
+  unicode-range: U+0020-007E, U+00A0-00FF,
+    U+4E00-9FFF, U+3040-30FF, U+31F0-31FF, U+FF00-FFEF,
+    U+F900-FAFF, U+2E80-2EFF, U+3000-303F, U+FE30-FE4F, U+20000-2A6DF;
+}
 
 /* ===== DESIGN TOKENS ===== */
 :root {
@@ -31,6 +46,7 @@
   --font-space-age: 'Space Age', sans-serif;
   --font-braille: 'Braille', sans-serif;
   --font-sf-telegraphic: 'SF Telegraphic', sans-serif;
+  --font-body: var(--font-aldrich);
 
   --ua-body-bg: rgb(210, 228, 252);
   --ua-text-primary: #2a3140;
@@ -64,6 +80,10 @@
   --ring: oklch(0.65 0.08 220);
 }
 
+/* ===== LOCALE FONT OVERRIDES ===== */
+[data-lang="zh"] { --font-body: 'Zpix', sans-serif; }
+[data-lang="ja"] { --font-body: 'Zpix', sans-serif; }
+
 /* ===== RESETS ===== */
 *, *::before, *::after { box-sizing: border-box; }
 * { margin: 0; padding: 0; }
@@ -78,7 +98,7 @@ body.ua-body {
     radial-gradient(ellipse 80% 60% at 20% 10%, rgba(180,210,255,0.15) 0%, transparent 60%),
     radial-gradient(ellipse 60% 80% at 80% 80%, rgba(200,220,255,0.1) 0%, transparent 60%);
   color: var(--ua-text-primary);
-  font-family: var(--font-aldrich);
+  font-family: var(--font-body);
   min-height: 100vh;
   overflow-x: hidden;
   width: 100%;
@@ -186,7 +206,7 @@ a:hover { color: var(--ua-link-hover); }
 
 /* ===== SECTION HEADING ===== */
 .ua-section-label {
-  font-family: var(--font-aldrich);
+  font-family: var(--font-body);
   font-size: 12px;
   color: var(--ua-text-muted-light);
   letter-spacing: 2px;
@@ -218,7 +238,7 @@ a:hover { color: var(--ua-link-hover); }
   min-width: 100%; min-height: 100%;
   width: auto; height: auto;
   object-fit: cover;
-  opacity: 0.45;
+  opacity: 0.5;
 }
 
 /* ===== ANIMATIONS ===== */
@@ -264,7 +284,7 @@ a:hover { color: var(--ua-link-hover); }
   border: 1px solid rgba(100,160,220,0.35);
   background: rgba(160,200,245,0.12);
   color: #6a9fd8;
-  font-family: var(--font-aldrich);
+  font-family: var(--font-body);
   font-size: 12px;
   letter-spacing: 1px;
 }

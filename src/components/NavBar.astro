@@ -1,11 +1,9 @@
 ---
-const navLinks = [
-  { label: 'HOME',     href: '/',      active: true },
-  { label: 'ABOUT',    href: '/about'  },
-  { label: 'PROJECTS', href: '/projects' },
-  { label: 'BLOG',     href: '/blog'   },
-  { label: 'LINKS',    href: '/links'  },
-];
+import type { NavContent } from '../i18n/content';
+import { nav } from '../i18n/content';
+
+interface Props { content?: NavContent; }
+const { content = nav.en } = Astro.props;
 ---
 
 <style>
@@ -107,22 +105,28 @@ const navLinks = [
   }
 
   .social-link {
-    width: 28px;
-    height: 28px;
-    border-radius: 8px;
+    width: 36px;
+    height: 32px;
+    border-radius: 12px;
     border: 1px solid var(--ua-panel-border);
-    background: rgba(255,255,255,0.7);
+    background: linear-gradient(180deg, #ffffff, #f0f4fa);
+    box-shadow: 0 1px 3px rgba(180,200,230,0.4), inset 0 -1px 3px rgba(180,200,230,0.3);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 14px;
-    color: var(--ua-text-muted);
-    transition: border-color 0.15s, color 0.15s;
+    font-family: 'Forced Square', sans-serif;
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: #8b939c;
+    transition: color 0.15s, background 0.15s, box-shadow 0.15s, border-color 0.15s;
     text-decoration: none;
+    user-select: none;
   }
   .social-link:hover {
-    border-color: #6aabf0;
     color: #4a8fd4;
+    background: linear-gradient(180deg, #f0f6ff, #e8f0fa);
+    box-shadow: 0 2px 6px rgba(100,160,220,0.2), inset 0 -1px 3px rgba(180,200,230,0.3);
+    border-color: rgba(100,160,220,0.5);
   }
 
   #loadercircle { animation: rotate 2s linear infinite; }
@@ -134,11 +138,11 @@ const navLinks = [
       <img src="/images/loadercircle.png" id="loadercircle" alt="" width="36" height="36" style="opacity:0.7;image-rendering:crisp-edges;" />
     </div>
     <div class="navbar-name">KAI</div>
-    <div class="navbar-handle">@unicodeangel</div>
+    <div class="navbar-handle">{content.handle}</div>
   </div>
 
   <nav class="navbar-nav">
-    {navLinks.map(link => (
+    {content.links.map(link => (
       <a href={link.href} class={`nav-item${link.active ? ' active' : ''}`}>
         {link.label}
       </a>

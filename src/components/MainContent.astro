@@ -1,34 +1,10 @@
 ---
-const projects = [
-  {
-    name: 'neural-canvas',
-    desc: 'Generative art using WebGL + diffusion models',
-    tags: ['WebGL', 'TypeScript', 'AI'],
-    href: '#',
-    star: '42',
-  },
-  {
-    name: 'pixelstream',
-    desc: 'Real-time pixel art collaboration tool',
-    tags: ['WebSocket', 'React', 'Canvas'],
-    href: '#',
-    star: '18',
-  },
-  {
-    name: 'ascii-forge',
-    desc: 'CLI for converting images to ASCII art',
-    tags: ['Rust', 'CLI'],
-    href: '#',
-    star: '91',
-  },
-];
+import type { MainContent } from '../i18n/content';
+import { main } from '../i18n/content';
 
-const skills = [
-  { name: 'TypeScript', level: 90 },
-  { name: 'Rust',       level: 70 },
-  { name: 'WebGL / GLSL', level: 60 },
-  { name: 'Systems Design', level: 75 },
-];
+interface Props { content?: MainContent; }
+const { content = main.en } = Astro.props;
+const { projects, skills } = content;
 ---
 
 <style>
@@ -80,7 +56,7 @@ const skills = [
   }
 
   .mc-lead {
-    font-family: var(--font-aldrich);
+    font-family: var(--font-body);
     font-size: 14.5px;
     color: var(--ua-text-muted);
     line-height: 1.75;
@@ -98,7 +74,7 @@ const skills = [
   }
 
   .mc-h2 {
-    font-family: var(--font-aldrich);
+    font-family: var(--font-body);
     font-size: 12px;
     color: var(--ua-text-muted-light);
     letter-spacing: 2.5px;
@@ -120,13 +96,13 @@ const skills = [
   .project-card + .project-card { margin-top: 8px; }
 
   .project-name {
-    font-family: var(--font-source-code-pro);
+    font-family: var(--font-body);
     font-size: 14px;
     color: #4a8fd4;
     font-weight: 600;
   }
   .project-desc {
-    font-family: var(--font-aldrich);
+    font-family: var(--font-body);
     font-size: 13px;
     color: var(--ua-text-muted);
     margin-top: 3px;
@@ -153,7 +129,7 @@ const skills = [
     border: 1px solid rgba(100,160,220,0.3);
     background: rgba(160,200,245,0.1);
     color: #6a9fd8;
-    font-family: var(--font-aldrich);
+    font-family: var(--font-body);
     font-size: 11px;
     letter-spacing: 1px;
   }
@@ -165,7 +141,7 @@ const skills = [
     margin-bottom: 9px;
   }
   .skill-name {
-    font-family: var(--font-aldrich);
+    font-family: var(--font-body);
     font-size: 13px;
     color: var(--ua-text-muted);
     width: 120px;
@@ -195,7 +171,7 @@ const skills = [
   .blink-notice {
     font-size: 14.5px;
     color: #74a4db;
-    font-family: var(--font-aldrich);
+    font-family: var(--font-body);
     line-height: 1.75;
   }
 
@@ -207,7 +183,7 @@ const skills = [
     padding: 7px 18px;
     background: rgba(255,255,255,0.4);
     border-top: 1px solid var(--ua-panel-border);
-    font-family: var(--font-forced-square);
+    font-family: var(--font-body);
     font-size: 12px;
     color: var(--ua-text-muted-light);
     letter-spacing: 1px;
@@ -225,26 +201,16 @@ const skills = [
   </div>
 
   <div class="mc-body">
-    <p class="mc-lead">
-      hey — I'm <span class="mc-highlight">Kai</span>, a software engineer obsessed with
-      the intersection of <span class="mc-highlight">systems programming</span>,
-      <span class="mc-highlight">generative art</span>, and the aesthetics of early internet culture.
-    </p>
+    <p class="mc-lead" set:html={content.welcomeP1} />
     <span class="mc-sep"></span>
-    <p class="mc-lead">
-      I build tools that make computers feel alive — from low-level network utilities to
-      browser-based creative environments. This is my digital space to share projects,
-      writing, and the things I'm collecting on the web.
-    </p>
+    <p class="mc-lead" set:html={content.welcomeP2} />
     <span class="mc-sep"></span>
     <span class="blink-notice">
-      <span class="blink-star">✦</span> still under construction — thank you for your patience <span class="blink-star">✦</span>
+      <span class="blink-star">✦</span> {content.blinkNotice} <span class="blink-star">✦</span>
     </span>
   </div>
 
-  <div class="fact-bar">
-    ∷ in the realm of zeros and ones, I search for my soul ∷
-  </div>
+  <div class="fact-bar">{content.factBar}</div>
 </div>
 
 <!-- PROJECTS PANEL -->
@@ -255,7 +221,7 @@ const skills = [
   </div>
 
   <div class="mc-body">
-    <p class="mc-h2">featured</p>
+    <p class="mc-h2">{content.projectsLabel}</p>
     {projects.map(p => (
       <div class="project-card">
         <div style="display:flex;align-items:baseline;gap:8px;">
@@ -279,7 +245,7 @@ const skills = [
   </div>
 
   <div class="mc-body">
-    <p class="mc-h2">proficiency</p>
+    <p class="mc-h2">{content.proficiencyLabel}</p>
     {skills.map(s => (
       <div class="skill-row">
         <span class="skill-name">{s.name}</span>

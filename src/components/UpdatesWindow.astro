@@ -1,10 +1,9 @@
 ---
-const updates = [
-  { date: '2026-07-08', text: 'launched new personal site on Astro' },
-  { date: '2026-06-30', text: 'published ascii-forge v2.0 on crates.io' },
-  { date: '2026-06-15', text: 'added WebGL renderer to neural-canvas' },
-  { date: '2026-05-20', text: 'moved hosting to Cloudflare Pages' },
-];
+import type { Update } from '../i18n/content';
+import { updates } from '../i18n/content';
+
+interface Props { content?: Update[]; }
+const { content = updates.en } = Astro.props;
 ---
 
 <style>
@@ -23,21 +22,21 @@ const updates = [
     letter-spacing: 1px;
   }
   .update-text {
-    font-family: var(--font-aldrich);
+    font-family: var(--font-body);
     font-size: 13px;
     color: var(--ua-text-muted);
     line-height: 1.4;
   }
 </style>
 
-<div class="ua-panel">
+<div class="ua-panel fade-up" style="animation-delay:0.1s;">
   <div class="ua-toolbar">
     <img src="/images/xbutton.png" alt="" class="ua-xbtn" />
     <span class="ua-toolbar-title">UPDATES</span>
   </div>
 
   <div style="padding: 12px 14px;">
-    {updates.map(u => (
+    {content.map(u => (
       <div class="update-row">
         <span class="update-date">{u.date}</span>
         <span class="update-text">{u.text}</span>
