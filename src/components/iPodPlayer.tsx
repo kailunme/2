@@ -211,17 +211,17 @@ export default function iPodPlayer({ title }: Props) {
               {/* labels */}
               <span style={{
                 position: 'absolute', top: 7, left: '50%', transform: 'translateX(-50%)',
-                fontFamily: 'var(--font-forced-square)', fontSize: 7, color: '#8aa8c8',
+                fontFamily: 'var(--font-forced-square)', fontSize: 8, color: '#8aa8c8',
                 letterSpacing: 1.5, pointerEvents: 'none', userSelect: 'none' as const,
               }}>MENU</span>
               <span style={{ position: 'absolute', left: 7, top: '50%', transform: 'translateY(-50%)', pointerEvents: 'none', lineHeight: 1 }}>
-                <svg width="16" height="11" viewBox="0 0 16 11" fill="#8aa8c8"><rect x="0" y="0" width="2.5" height="11"/><polygon points="9,0 9,11 4,5.5"/><polygon points="15,0 15,11 10,5.5"/></svg>
+                <svg width="12" height="7" viewBox="0 0 12 7" fill="#8aa8c8"><rect x="0" y="0" width="1.5" height="7"/><polygon points="6.5,0 6.5,7 2.5,3.5"/><polygon points="11,0 11,7 7,3.5"/></svg>
               </span>
               <span style={{ position: 'absolute', right: 7, top: '50%', transform: 'translateY(-50%)', pointerEvents: 'none', lineHeight: 1 }}>
-                <svg width="16" height="11" viewBox="0 0 16 11" fill="#8aa8c8"><polygon points="1,0 1,11 6,5.5"/><polygon points="7,0 7,11 12,5.5"/><rect x="13.5" y="0" width="2.5" height="11"/></svg>
+                <svg width="12" height="7" viewBox="0 0 12 7" fill="#8aa8c8"><polygon points="1,0 1,7 5,3.5"/><polygon points="5.5,0 5.5,7 9.5,3.5"/><rect x="10.5" y="0" width="1.5" height="7"/></svg>
               </span>
-              <span style={{ position: 'absolute', bottom: 7, left: '50%', transform: 'translateX(-50%)', pointerEvents: 'none', lineHeight: 1 }}>
-                <svg width="20" height="10" viewBox="0 0 20 10" fill="#8aa8c8"><polygon points="0,0 0,10 7,5"/><rect x="10" y="0" width="3" height="10"/><rect x="15" y="0" width="3" height="10"/></svg>
+              <span style={{ position: 'absolute', bottom: 8, left: '50%', transform: 'translateX(-50%)', pointerEvents: 'none', lineHeight: 1 }}>
+                <svg width="18" height="8" viewBox="0 0 18 8" fill="#8aa8c8"><polygon points="0,0 0,8 6,4"/><rect x="8" y="0" width="2.5" height="8"/><rect x="12.5" y="0" width="2.5" height="8"/></svg>
               </span>
 
               {/* center button */}
