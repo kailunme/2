@@ -117,10 +117,16 @@ const { content = nav.en } = Astro.props;
     font-family: 'Forced Square', sans-serif;
     font-size: 12px;
     letter-spacing: 2px;
+    padding-left: 2px;
     color: #8b939c;
     transition: color 0.15s, background 0.15s, box-shadow 0.15s, border-color 0.15s;
     text-decoration: none;
     user-select: none;
+  }
+  .social-link[title="Email"] {
+    font-size: 13px;
+    letter-spacing: 0;
+    padding-left: 0;
   }
   .social-link:hover {
     color: #4a8fd4;
