@@ -1,9 +1,9 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 const PLAYLIST = [
-  { title: "Habanera (Techno Edit)", artist: "Yelle", duration: 178 },
-  { title: "À Cause Des Garçons",    artist: "Yelle", duration: 193 },
-  { title: "Je Veux Te Voir",        artist: "Yelle", duration: 202 },
+  { title: "Habanera (Techno Edit)", artist: "Yelle",  src: "/audio/habanera.mp3" },
+  { title: "À Cause Des Garçons",    artist: "Yelle",  src: "/audio/acause.mp3" },
+  { title: "Je Veux Te Voir",        artist: "Yelle",  src: "/audio/jeveux.mp3" },
 ];
 
 interface Props { title?: string; artist?: string; }
@@ -15,28 +15,54 @@ export default function iPodPlayer({ title }: Props) {
   const [trackIdx, setTrackIdx] = useState(startIdx >= 0 ? startIdx : 0);
   const [isPlaying, setIsPlaying] = useState(false);
   const [elapsed, setElapsed] = useState(0);
+  const [duration, setDuration] = useState(0);
   const [pressedZone, setPressedZone] = useState<Zone>(null);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
 
   const track = PLAYLIST[trackIdx];
-  const progress = (elapsed / track.duration) * 100;
 
+  // create/swap audio element when track changes
   useEffect(() => {
-    if (!isPlaying) return;
-    const id = setInterval(() => {
-      setElapsed(prev => {
-        if (prev >= track.duration) {
-          setTrackIdx(i => (i + 1) % PLAYLIST.length);
-          return 0;
-        }
-        return prev + 1;
-      });
-    }, 1000);
-    return () => clearInterval(id);
-  }, [isPlaying, track.duration]);
+    const audio = new Audio(track.src);
+    audioRef.current = audio;
+    setElapsed(0);
+    setDuration(0);
 
-  useEffect(() => { setElapsed(0); }, [trackIdx]);
+    audio.addEventListener('loadedmetadata', () => setDuration(audio.duration));
+    audio.addEventListener('timeupdate', () => setElapsed(audio.currentTime));
+    audio.addEventListener('ended', () => {
+      setTrackIdx(i => (i + 1) % PLAYLIST.length);
+    });
 
-  const fmt = (s: number) => `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`;
+    if (isPlaying) {
+      audio.play().catch(() => setIsPlaying(false));
+    }
+
+    return () => {
+      audio.pause();
+      audio.src = '';
+    };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [trackIdx]);
+
+  // sync play/pause state to audio element
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    if (isPlaying) {
+      audio.play().catch(() => setIsPlaying(false));
+    } else {
+      audio.pause();
+    }
+  }, [isPlaying]);
+
+  const fmt = (s: number) => {
+    if (!isFinite(s)) return '0:00';
+    return `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, '0')}`;
+  };
+
+  const progress = duration > 0 ? (elapsed / duration) * 100 : 0;
+
   const handlePrev = () => setTrackIdx(i => (i - 1 + PLAYLIST.length) % PLAYLIST.length);
   const handleNext = () => setTrackIdx(i => (i + 1) % PLAYLIST.length);
   const handlePlay = () => setIsPlaying(p => !p);
@@ -145,7 +171,7 @@ export default function iPodPlayer({ title }: Props) {
               letterSpacing: 1,
             }}>
               <span>{fmt(elapsed)}</span>
-              <span>-{fmt(track.duration - elapsed)}</span>
+              <span>{duration > 0 ? `-${fmt(duration - elapsed)}` : '-0:00'}</span>
             </div>
           </div>
 
