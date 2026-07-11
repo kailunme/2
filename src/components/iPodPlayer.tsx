@@ -1,9 +1,8 @@
 import { useState, useEffect, useRef } from 'react';
 
 const PLAYLIST = [
-  { title: "Habanera (Techno Edit)", artist: "Yelle",  src: "/audio/habanera.mp3" },
-  { title: "À Cause Des Garçons",    artist: "Yelle",  src: "/audio/acause.mp3" },
-  { title: "Je Veux Te Voir",        artist: "Yelle",  src: "/audio/jeveux.mp3" },
+  { title: "Fear",    artist: "",  src: "/audio/Fear.mp3" },
+  { title: "New You", artist: "",  src: "/audio/New You.mp3" },
 ];
 
 interface Props { title?: string; artist?: string; }
