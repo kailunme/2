@@ -80,6 +80,7 @@ export default function SynthPanel({ current }: Props) {
                 cursor: active ? 'default' : 'pointer',
                 padding: 0,
                 outline: 'none',
+                touchAction: 'manipulation',
               }}
             >
               {/* LED indicator dot */}
@@ -145,11 +146,10 @@ export default function SynthPanel({ current }: Props) {
           {/* spacer matching LED dot row */}
           <div style={{ width: 5, height: 5 }} />
           <button
+            onClick={handleBg}
             onMouseDown={() => setPressed(true)}
-            onMouseUp={() => { setPressed(false); handleBg(); }}
+            onMouseUp={() => setPressed(false)}
             onMouseLeave={() => setPressed(false)}
-            onTouchStart={(e) => { e.preventDefault(); setPressed(true); }}
-            onTouchEnd={(e) => { e.preventDefault(); setPressed(false); handleBg(); }}
             style={{
               width: 36,
               height: 36,
@@ -175,6 +175,7 @@ export default function SynthPanel({ current }: Props) {
               transform: pressed ? 'translateY(1px)' : 'translateY(0)',
               transition: pressed ? 'none' : 'background 0.15s, box-shadow 0.15s, color 0.15s, transform 0.1s',
               userSelect: 'none',
+              touchAction: 'manipulation',
             }}
           >
             <svg width="15" height="15" viewBox="0 0 15 15" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">

@@ -45,6 +45,7 @@ export default function iPodPlayer({ title }: Props) {
     position: 'absolute', inset: 0, background: 'transparent',
     border: 'none', cursor: 'pointer', padding: 0,
     transition: 'background 0.08s',
+    touchAction: 'manipulation',
   };
   const zonePressed: React.CSSProperties = {
     background: 'radial-gradient(circle at center, rgba(74,143,212,0.18) 0%, rgba(74,143,212,0.08) 100%)',
@@ -174,35 +175,30 @@ export default function iPodPlayer({ title }: Props) {
                 onMouseDown={() => setPressedZone('menu')}
                 onMouseUp={() => setPressedZone(null)}
                 onMouseLeave={() => setPressedZone(null)}
-                onTouchStart={() => setPressedZone('menu')}
-                onTouchEnd={() => setPressedZone(null)}
               />
               <button
                 aria-label="previous"
                 style={{ ...zoneBase, clipPath: 'polygon(0% 20%, 0% 80%, 50% 50%)', ...(pressedZone === 'prev' ? zonePressed : {}) }}
                 onMouseDown={() => setPressedZone('prev')}
-                onMouseUp={() => { setPressedZone(null); handlePrev(); }}
+                onMouseUp={() => setPressedZone(null)}
                 onMouseLeave={() => setPressedZone(null)}
-                onTouchStart={(e) => { e.preventDefault(); setPressedZone('prev'); }}
-                onTouchEnd={(e) => { e.preventDefault(); setPressedZone(null); handlePrev(); }}
+                onClick={handlePrev}
               />
               <button
                 aria-label="next"
                 style={{ ...zoneBase, clipPath: 'polygon(100% 20%, 100% 80%, 50% 50%)', ...(pressedZone === 'next' ? zonePressed : {}) }}
                 onMouseDown={() => setPressedZone('next')}
-                onMouseUp={() => { setPressedZone(null); handleNext(); }}
+                onMouseUp={() => setPressedZone(null)}
                 onMouseLeave={() => setPressedZone(null)}
-                onTouchStart={(e) => { e.preventDefault(); setPressedZone('next'); }}
-                onTouchEnd={(e) => { e.preventDefault(); setPressedZone(null); handleNext(); }}
+                onClick={handleNext}
               />
               <button
                 aria-label="play/pause"
                 style={{ ...zoneBase, clipPath: 'polygon(20% 100%, 80% 100%, 50% 50%)', ...(pressedZone === 'bottom' ? zonePressed : {}) }}
                 onMouseDown={() => setPressedZone('bottom' as Zone)}
-                onMouseUp={() => { setPressedZone(null); handlePlay(); }}
+                onMouseUp={() => setPressedZone(null)}
                 onMouseLeave={() => setPressedZone(null)}
-                onTouchStart={(e) => { e.preventDefault(); setPressedZone('bottom' as Zone); }}
-                onTouchEnd={(e) => { e.preventDefault(); setPressedZone(null); handlePlay(); }}
+                onClick={handlePlay}
               />
 
               {/* labels */}
@@ -224,17 +220,17 @@ export default function iPodPlayer({ title }: Props) {
               {/* center button */}
               <button
                 aria-label="play/pause"
+                onClick={handlePlay}
                 onMouseDown={() => setPressedZone('center')}
-                onMouseUp={() => { setPressedZone(null); handlePlay(); }}
+                onMouseUp={() => setPressedZone(null)}
                 onMouseLeave={() => setPressedZone(null)}
-                onTouchStart={(e) => { e.preventDefault(); setPressedZone('center'); }}
-                onTouchEnd={(e) => { e.preventDefault(); setPressedZone(null); handlePlay(); }}
                 style={{
                   position: 'absolute',
                   top: '50%', left: '50%',
                   transform: 'translate(-50%, -50%)',
                   width: 36, height: 36,
                   borderRadius: '50%',
+                  touchAction: 'manipulation',
                   background: centerPressed
                     ? 'linear-gradient(180deg,#dce8f5,#e8f0fa)'
                     : 'linear-gradient(145deg,#f0f5fc,#e0ecf8)',
