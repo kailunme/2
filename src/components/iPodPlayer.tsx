@@ -149,13 +149,6 @@ export default function iPodPlayer({ title }: Props) {
             </div>
           </div>
 
-          {/* divider */}
-          <div style={{
-            height: 1,
-            background: 'linear-gradient(90deg, transparent, rgba(160,185,215,0.5) 30%, rgba(160,185,215,0.5) 70%, transparent)',
-            marginBottom: 10,
-          }} />
-
           {/* click wheel */}
           <div style={{ display: 'flex', justifyContent: 'center' }}>
             <div style={{
