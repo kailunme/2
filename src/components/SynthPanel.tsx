@@ -67,60 +67,67 @@ export default function SynthPanel({ current }: Props) {
         {LANGS.map(l => {
           const active = l.code === activeCode;
           return (
-            <button
-              key={l.code}
-              onClick={() => handleLang(l.code, l.href)}
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                gap: 6,
-                width: 36,
-                background: 'none',
-                border: 'none',
-                cursor: active ? 'default' : 'pointer',
-                padding: 0,
-                outline: 'none',
-                touchAction: 'manipulation',
-              }}
-            >
-              {/* LED indicator dot */}
-              <div style={{
-                width: 5,
-                height: 5,
-                borderRadius: '50%',
-                background: active ? '#6aabf0' : 'transparent',
-                boxShadow: active ? '0 0 6px rgba(106,171,240,0.9)' : 'none',
-                transition: 'background 0.2s, box-shadow 0.2s',
-              }} />
-              {/* switch track */}
-              <div style={{
-                width: 16,
-                height: 36,
-                borderRadius: 8,
-                background: 'linear-gradient(180deg, #ccd8e8 0%, #ddeaf8 100%)',
-                border: '1px solid #b0c4da',
-                boxShadow: 'inset 0 1px 4px rgba(100,140,190,0.25)',
-                position: 'relative',
-                padding: 2,
-              }}>
+            <div key={l.code} style={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              gap: 6,
+              width: 36,
+            }}>
+              <button
+                onClick={() => handleLang(l.code, l.href)}
+                style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  gap: 6,
+                  background: 'none',
+                  border: 'none',
+                  cursor: active ? 'default' : 'pointer',
+                  padding: 0,
+                  outline: 'none',
+                  touchAction: 'manipulation',
+                  width: '100%',
+                }}
+              >
+                {/* LED indicator dot */}
                 <div style={{
-                  position: 'absolute',
-                  left: 2,
-                  right: 2,
-                  top: 2,
-                  height: 16,
-                  borderRadius: 5,
-                  background: active
-                    ? 'linear-gradient(180deg, #a8d4ff 0%, #6aabf0 100%)'
-                    : 'linear-gradient(180deg, #dce8f5 0%, #c8d8ec 100%)',
-                  boxShadow: active
-                    ? '0 0 6px rgba(106,171,240,0.7), inset 0 1px 2px rgba(255,255,255,0.6)'
-                    : 'inset 0 1px 2px rgba(255,255,255,0.5), 0 1px 2px rgba(100,140,180,0.15)',
-                  transform: active ? 'translateY(0)' : 'translateY(16px)',
-                  transition: 'transform 0.22s cubic-bezier(0.4,0,0.2,1), background 0.2s, box-shadow 0.2s',
+                  width: 5,
+                  height: 5,
+                  borderRadius: '50%',
+                  background: active ? '#6aabf0' : 'transparent',
+                  boxShadow: active ? '0 0 6px rgba(106,171,240,0.9)' : 'none',
+                  transition: 'background 0.2s, box-shadow 0.2s',
                 }} />
-              </div>
+                {/* switch track */}
+                <div style={{
+                  width: 16,
+                  height: 36,
+                  borderRadius: 8,
+                  background: 'linear-gradient(180deg, #ccd8e8 0%, #ddeaf8 100%)',
+                  border: '1px solid #b0c4da',
+                  boxShadow: 'inset 0 1px 4px rgba(100,140,190,0.25)',
+                  position: 'relative',
+                  padding: 2,
+                }}>
+                  <div style={{
+                    position: 'absolute',
+                    left: 2,
+                    right: 2,
+                    top: 2,
+                    height: 16,
+                    borderRadius: 5,
+                    background: active
+                      ? 'linear-gradient(180deg, #a8d4ff 0%, #6aabf0 100%)'
+                      : 'linear-gradient(180deg, #dce8f5 0%, #c8d8ec 100%)',
+                    boxShadow: active
+                      ? '0 0 6px rgba(106,171,240,0.7), inset 0 1px 2px rgba(255,255,255,0.6)'
+                      : 'inset 0 1px 2px rgba(255,255,255,0.5), 0 1px 2px rgba(100,140,180,0.15)',
+                    transform: active ? 'translateY(0)' : 'translateY(16px)',
+                    transition: 'transform 0.22s cubic-bezier(0.4,0,0.2,1), background 0.2s, box-shadow 0.2s',
+                  }} />
+                </div>
+              </button>
               {/* label */}
               <span style={{
                 fontFamily: "'Zpix', monospace",
@@ -129,11 +136,8 @@ export default function SynthPanel({ current }: Props) {
                 color: active ? '#5a9fd8' : '#8b939c',
                 transition: 'color 0.15s',
                 whiteSpace: 'nowrap',
-                width: '100%',
-                textAlign: 'center',
-                display: 'block',
               }}>{l.label}</span>
-            </button>
+            </div>
           );
         })}
 
