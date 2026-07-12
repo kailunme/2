@@ -114,25 +114,23 @@ const { content = nav.en } = Astro.props;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: 'Forced Square', sans-serif;
-    font-size: 12px;
-    letter-spacing: 2px;
-    padding-left: 2px;
-    color: #8b939c;
-    transition: color 0.15s, background 0.15s, box-shadow 0.15s, border-color 0.15s;
+    transition: background 0.15s, box-shadow 0.15s, border-color 0.15s, opacity 0.15s;
     text-decoration: none;
     user-select: none;
   }
-  .social-link[title="Email"] {
-    font-size: 13px;
-    letter-spacing: 0;
-    padding-left: 0;
+  .social-link img {
+    width: 17px;
+    height: 17px;
+    opacity: 0.45;
+    transition: opacity 0.15s;
   }
   .social-link:hover {
-    color: #4a8fd4;
     background: linear-gradient(180deg, #f0f6ff, #e8f0fa);
     box-shadow: 0 2px 6px rgba(100,160,220,0.2), inset 0 -1px 3px rgba(180,200,230,0.3);
     border-color: rgba(100,160,220,0.5);
+  }
+  .social-link:hover img {
+    opacity: 0.75;
   }
 
   #loadercircle { animation: rotate 2s linear infinite; }
@@ -156,8 +154,14 @@ const { content = nav.en } = Astro.props;
   </nav>
 
   <div class="navbar-footer">
-    <a href="https://github.com" target="_blank" class="social-link" title="GitHub">GH</a>
-    <a href="https://twitter.com" target="_blank" class="social-link" title="Twitter">TW</a>
-    <a href="mailto:hello@example.com" class="social-link" title="Email">@</a>
+    <a href="https://github.com" target="_blank" class="social-link" title="GitHub">
+      <img src="/images/icon/github-logo.svg" alt="GitHub" />
+    </a>
+    <a href="https://instagram.com" target="_blank" class="social-link" title="Instagram">
+      <img src="/images/icon/instagram-logo.svg" alt="Instagram" />
+    </a>
+    <a href="mailto:hello@example.com" class="social-link" title="Email">
+      <img src="/images/icon/at.svg" alt="Email" />
+    </a>
   </div>
 </div>
