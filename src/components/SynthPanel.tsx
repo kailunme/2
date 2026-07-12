@@ -129,6 +129,9 @@ export default function SynthPanel({ current }: Props) {
                 color: active ? '#5a9fd8' : '#8b939c',
                 transition: 'color 0.15s',
                 whiteSpace: 'nowrap',
+                width: '100%',
+                textAlign: 'center',
+                display: 'block',
               }}>{l.label}</span>
             </button>
           );
@@ -193,6 +196,8 @@ export default function SynthPanel({ current }: Props) {
             letterSpacing: 2,
             color: isPlaying ? '#5a9fd8' : '#8b939c',
             transition: 'color 0.15s',
+            display: 'block',
+            textAlign: 'center',
           }}>BG</span>
         </div>
       </div>
