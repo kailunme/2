@@ -4,8 +4,8 @@ interface Props { current: 'en' | 'zh' | 'ja'; }
 
 const LANGS = [
   { code: 'en' as const, label: 'ENG', href: '/' },
-  { code: 'zh' as const, label: '中文', href: '/zh/' },
-  { code: 'ja' as const, label: '日本語', href: '/ja/' },
+  { code: 'zh' as const, label: '中', href: '/zh/' },
+  { code: 'ja' as const, label: 'あ', href: '/ja/' },
 ];
 
 export default function SynthPanel({ current }: Props) {
