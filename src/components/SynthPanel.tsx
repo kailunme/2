@@ -127,6 +127,7 @@ export default function SynthPanel({ current }: Props) {
                 letterSpacing: 1,
                 color: active ? '#5a9fd8' : '#8b939c',
                 transition: 'color 0.15s',
+                whiteSpace: 'nowrap',
               }}>{l.label}</span>
             </button>
           );
