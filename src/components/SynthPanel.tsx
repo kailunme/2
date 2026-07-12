@@ -3,9 +3,9 @@ import { useState } from 'react';
 interface Props { current: 'en' | 'zh' | 'ja'; }
 
 const LANGS = [
-  { code: 'en' as const, label: 'EN', href: '/' },
-  { code: 'zh' as const, label: 'ZH', href: '/zh/' },
-  { code: 'ja' as const, label: 'JA', href: '/ja/' },
+  { code: 'en' as const, label: 'ENG', href: '/' },
+  { code: 'zh' as const, label: '中文', href: '/zh/' },
+  { code: 'ja' as const, label: '日本語', href: '/ja/' },
 ];
 
 export default function SynthPanel({ current }: Props) {
@@ -41,7 +41,7 @@ export default function SynthPanel({ current }: Props) {
         marginBottom: 6,
       }}>
         <span style={{
-          fontFamily: 'var(--font-forced-square)',
+          fontFamily: "'Zpix', monospace",
           fontSize: 9,
           letterSpacing: 2,
           color: '#bcc7d4',
@@ -49,7 +49,7 @@ export default function SynthPanel({ current }: Props) {
         }}>CTRL</span>
         <div style={{ flex: 1, height: 1, background: 'rgba(160,185,215,0.35)', margin: '0 8px' }} />
         <span style={{
-          fontFamily: 'var(--font-forced-square)',
+          fontFamily: "'Zpix', monospace",
           fontSize: 9,
           letterSpacing: 2,
           color: '#bcc7d4',
@@ -122,9 +122,9 @@ export default function SynthPanel({ current }: Props) {
               </div>
               {/* label */}
               <span style={{
-                fontFamily: 'var(--font-forced-square)',
+                fontFamily: "'Zpix', monospace",
                 fontSize: 12,
-                letterSpacing: 2,
+                letterSpacing: 1,
                 color: active ? '#5a9fd8' : '#8b939c',
                 transition: 'color 0.15s',
               }}>{l.label}</span>
@@ -184,7 +184,7 @@ export default function SynthPanel({ current }: Props) {
             </svg>
           </button>
           <span style={{
-            fontFamily: 'var(--font-forced-square)',
+            fontFamily: "'Zpix', monospace",
             fontSize: 12,
             letterSpacing: 2,
             color: isPlaying ? '#5a9fd8' : '#8b939c',
