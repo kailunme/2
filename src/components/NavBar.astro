@@ -122,7 +122,12 @@ const { content = nav.en } = Astro.props;
     width: 17px;
     height: 17px;
     opacity: 0.45;
+    image-rendering: pixelated;
     transition: opacity 0.15s;
+  }
+  .social-link img.instagram-icon {
+    width: 16px;
+    height: 16px;
   }
   .social-link:hover {
     background: linear-gradient(180deg, #f0f6ff, #e8f0fa);
@@ -155,13 +160,13 @@ const { content = nav.en } = Astro.props;
 
   <div class="navbar-footer">
     <a href="https://github.com" target="_blank" class="social-link" title="GitHub">
-      <img src="/images/icon/github-logo.svg" alt="GitHub" />
+      <img src="/images/icon/github.svg" alt="GitHub" />
     </a>
     <a href="https://instagram.com" target="_blank" class="social-link" title="Instagram">
-      <img src="/images/icon/instagram-logo.svg" alt="Instagram" />
+      <img src="/images/icon/instagram.svg" alt="Instagram" class="instagram-icon" />
     </a>
     <a href="mailto:hello@example.com" class="social-link" title="Email">
-      <img src="/images/icon/envelope-simple.svg" alt="Email" />
+      <img src="/images/icon/envelope.svg" alt="Email" />
     </a>
   </div>
 </div>

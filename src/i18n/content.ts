@@ -42,7 +42,6 @@ export interface SidebarContent {
   statsTitle: string;
   buttonTitle: string;
   stats: { label: string; value: string }[];
-  linkBackLabel: string;
 }
 
 export const nav: Record<Locale, NavContent> = {
@@ -168,8 +167,7 @@ export const sidebar: Record<Locale, SidebarContent> = {
     nowPlayingArtist: 'Yelle',
     listeningLabel: 'listening',
     statsTitle: 'STATS',
-    buttonTitle: 'BUTTON',
-    linkBackLabel: 'link back ↑',
+    buttonTitle: 'CREDITS',
     stats: [
       { label: 'Created',    value: 'Jul 2024' },
       { label: 'Updated',    value: 'Jul 2026' },
@@ -181,8 +179,7 @@ export const sidebar: Record<Locale, SidebarContent> = {
     nowPlayingArtist: 'Yelle',
     listeningLabel: '正在播放',
     statsTitle: 'STATS',
-    buttonTitle: 'BUTTON',
-    linkBackLabel: '回链 ↑',
+    buttonTitle: 'CREDITS',
     stats: [
       { label: '创建时间', value: '2024年7月' },
       { label: '更新时间', value: '2026年7月' },
@@ -194,8 +191,7 @@ export const sidebar: Record<Locale, SidebarContent> = {
     nowPlayingArtist: 'Yelle',
     listeningLabel: '再生中',
     statsTitle: 'STATS',
-    buttonTitle: 'BUTTON',
-    linkBackLabel: 'リンクバック ↑',
+    buttonTitle: 'CREDITS',
     stats: [
       { label: '作成日',   value: '2024年7月' },
       { label: '更新日',   value: '2026年7月' },

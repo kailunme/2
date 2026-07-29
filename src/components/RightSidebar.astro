@@ -35,7 +35,7 @@ const { content = sidebar.en } = Astro.props;
     flex-direction: column;
     align-items: center;
     gap: 6px;
-    padding: 10px 0 4px;
+    padding: 17px 14px;
   }
   .site-button-img {
     opacity: 0.75;
@@ -81,9 +81,12 @@ const { content = sidebar.en } = Astro.props;
     <span class="ua-toolbar-title">{content.buttonTitle}</span>
   </div>
   <div class="button-gif-wrap">
-    <img src="/images/UnicodeAngelButton.gif" alt="site button" class="site-button-img" />
-    <span style="font-family:var(--font-body);font-size:11px;color:var(--ua-text-muted-light);letter-spacing:1px;">
-      {content.linkBackLabel}
+    <img src="/images/UnicodeAngelButton.gif" alt="unicodeangel" class="site-button-img" />
+    <span style="font-family:var(--font-body);font-size:10px;color:var(--ua-text-muted-light);opacity:0.7;text-align:center;line-height:1.5;">
+      Inspired by <a href="https://unicodeangel.neocities.org" target="_blank" style="color:inherit;text-decoration:underline;text-underline-offset:2px;">unicodeangel</a>
+    </span>
+    <span style="font-family:var(--font-body);font-size:10px;color:var(--ua-text-muted-light);opacity:0.7;text-align:center;line-height:1.5;">
+      Icons from <a href="https://pixeliconlibrary.com/" target="_blank" style="color:inherit;text-decoration:underline;text-underline-offset:2px;">Pixel Icon Library</a> by <a href="https://hackernoon.com/" target="_blank" style="color:inherit;text-decoration:underline;text-underline-offset:2px;">HackerNoon</a>
     </span>
   </div>
 </div>
