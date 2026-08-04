@@ -18,35 +18,35 @@ const { content, nav, locale } = Astro.props;
     <ControlPanel current={locale} />
   </div>
 
+  <!-- middle column: MISC + NEOWEB (panels 4 & 5) -->
   <div class="links-col-main">
-    <!-- top 3 panels: equal columns -->
-    <div class="cat-grid-top">
-      {content.categories.slice(0, 3).map((cat, i) => (
-        <div class="ua-panel fade-up" style={`animation-delay:${0.06 * (i + 1)}s`}>
-          <div class="ua-toolbar">
-            <img src="/images/xbutton.png" alt="" class="ua-xbtn" />
-            <span class="ua-toolbar-title">{cat.name}</span>
-          </div>
-          <div class="link-list">
-            {cat.links.map(link => (
-              <div class="link-row">
-                <span class="link-bullet">▸</span>
-                <a href={link.url} target="_blank" rel="noopener noreferrer" class="link-title">{link.title}</a>
-              </div>
-            ))}
-          </div>
-        </div>
-      ))}
-    </div>
-
-    <!-- panels 4 & 5: full-width with multi-column links -->
     {content.categories.slice(3).map((cat, i) => (
-      <div class="ua-panel fade-up" style={`animation-delay:${0.06 * (i + 4)}s`}>
-        <div class="ua-toolbar">
+      <div class="ua-panel fade-up" style={`animation-delay:${0.06 * (i + 1)}s`}>
+        <div class="lp-toolbar">
+          <span class="lp-cat-title">{cat.name}</span>
           <img src="/images/xbutton.png" alt="" class="ua-xbtn" />
-          <span class="ua-toolbar-title">{cat.name}</span>
         </div>
         <div class="link-list-wide">
+          {cat.links.map(link => (
+            <div class="link-row">
+              <span class="link-bullet">▸</span>
+              <a href={link.url} target="_blank" rel="noopener noreferrer" class="link-title">{link.title}</a>
+            </div>
+          ))}
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <!-- right column: WORK + GOOGLE + BROWSE (panels 1–3) -->
+  <div class="links-col-right">
+    {content.categories.slice(0, 3).map((cat, i) => (
+      <div class="ua-panel fade-up" style={`animation-delay:${0.06 * (i + 3)}s`}>
+        <div class="lp-toolbar">
+          <span class="lp-cat-title">{cat.name}</span>
+          <img src="/images/xbutton.png" alt="" class="ua-xbtn" />
+        </div>
+        <div class="link-list">
           {cat.links.map(link => (
             <div class="link-row">
               <span class="link-bullet">▸</span>
