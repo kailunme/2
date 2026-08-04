@@ -1,0 +1,60 @@
+---
+import type { LinksContent } from '../i18n/content';
+import type { NavContent } from '../i18n/content';
+import NavBar from './NavBar.astro';
+import ControlPanel from './ControlPanel.astro';
+
+interface Props {
+  content: LinksContent;
+  nav: NavContent;
+  locale: 'en' | 'zh' | 'ja';
+}
+const { content, nav, locale } = Astro.props;
+---
+
+<div class="links-grid">
+  <div class="links-col-left">
+    <NavBar content={nav} />
+    <ControlPanel current={locale} />
+  </div>
+
+  <div class="links-col-main">
+    <!-- top 3 panels: equal columns -->
+    <div class="cat-grid-top">
+      {content.categories.slice(0, 3).map((cat, i) => (
+        <div class="ua-panel fade-up" style={`animation-delay:${0.06 * (i + 1)}s`}>
+          <div class="ua-toolbar">
+            <img src="/images/xbutton.png" alt="" class="ua-xbtn" />
+            <span class="ua-toolbar-title">{cat.name}</span>
+          </div>
+          <div class="link-list">
+            {cat.links.map(link => (
+              <div class="link-row">
+                <span class="link-bullet">▸</span>
+                <a href={link.url} target="_blank" rel="noopener noreferrer" class="link-title">{link.title}</a>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- panels 4 & 5: full-width with multi-column links -->
+    {content.categories.slice(3).map((cat, i) => (
+      <div class="ua-panel fade-up" style={`animation-delay:${0.06 * (i + 4)}s`}>
+        <div class="ua-toolbar">
+          <img src="/images/xbutton.png" alt="" class="ua-xbtn" />
+          <span class="ua-toolbar-title">{cat.name}</span>
+        </div>
+        <div class="link-list-wide">
+          {cat.links.map(link => (
+            <div class="link-row">
+              <span class="link-bullet">▸</span>
+              <a href={link.url} target="_blank" rel="noopener noreferrer" class="link-title">{link.title}</a>
+            </div>
+          ))}
+        </div>
+      </div>
+    ))}
+  </div>
+</div>

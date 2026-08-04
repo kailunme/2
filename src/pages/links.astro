@@ -1,0 +1,19 @@
+---
+import Layout from '../layouts/Layout.astro';
+import LinksPage from '../components/LinksPage.astro';
+import { linksData, nav } from '../i18n/content';
+
+const navContent = {
+  ...nav.en,
+  links: nav.en.links.map(l => ({ ...l, active: l.href === '/links' })),
+};
+---
+
+<Layout title="links — kai">
+  <div class="bg-video-container" transition:persist="bg-video">
+    <video id="bg-video" autoplay muted loop playsinline class="bg-video">
+      <source src="/videos/background.mp4" type="video/mp4" />
+    </video>
+  </div>
+  <LinksPage content={linksData.en} nav={navContent} locale="en" />
+</Layout>

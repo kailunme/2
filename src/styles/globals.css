@@ -153,6 +153,114 @@ a:hover { color: var(--ua-link-hover); }
   .col-right .ua-panel + .ua-panel { margin-top: 0; }
 }
 
+/* ===== LINKS PAGE ===== */
+.links-grid {
+  display: grid;
+  grid-template-columns: 210px 1fr;
+  column-gap: 36px;
+  row-gap: 18px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px 40px 48px;
+  align-items: start;
+}
+
+.links-col-left {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.links-col-main {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.cat-grid-top {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  align-items: start;
+}
+
+.link-list {
+  padding: 8px 14px 12px;
+}
+
+.link-list-wide {
+  padding: 10px 14px 14px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 0 24px;
+}
+
+.link-row {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  padding: 5px 0;
+  border-bottom: 1px dashed rgba(180,205,235,0.4);
+}
+.link-row:last-child { border-bottom: none; }
+
+.link-bullet {
+  font-size: 10px;
+  color: var(--ua-text-muted-light);
+  flex-shrink: 0;
+  line-height: 1.6;
+}
+
+.link-title {
+  font-family: 'Zpix', var(--font-source-code-pro);
+  font-size: 12px;
+  color: #5a9fd8;
+  text-decoration: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex-shrink: 0;
+}
+.link-title:hover { color: var(--ua-link-hover); text-decoration: underline; text-underline-offset: 2px; }
+
+.links-col-main .ua-panel + .ua-panel { margin-top: 0; }
+.cat-grid-top .ua-panel + .ua-panel { margin-top: 0; }
+
+@media (max-width: 1050px) {
+  .links-grid {
+    grid-template-columns: 190px 1fr;
+    column-gap: 36px;
+  }
+  .cat-grid-top {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .link-list-wide {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  }
+}
+
+@media (max-width: 700px) {
+  .links-grid {
+    grid-template-columns: 1fr;
+    padding: 24px 40px 48px;
+    gap: 12px;
+  }
+  .links-col-left {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .links-col-main { gap: 12px; }
+  .cat-grid-top {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .link-list-wide {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 /* ===== PANEL ===== */
 .ua-panel {
   background: var(--ua-panel-bg);

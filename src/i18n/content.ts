@@ -1,5 +1,22 @@
 export type Locale = 'en' | 'zh' | 'ja';
 
+export interface BookmarkLink {
+  title: string;
+  url: string;
+  desc?: string;
+}
+
+export interface LinkCategory {
+  name: string;
+  links: BookmarkLink[];
+}
+
+export interface LinksContent {
+  pageTitle: string;
+  desc: string;
+  categories: LinkCategory[];
+}
+
 export interface NavContent {
   handle: string;
   links: { label: string; href: string; active?: boolean }[];
@@ -44,6 +61,105 @@ export interface SidebarContent {
   stats: { label: string; value: string }[];
 }
 
+export const linksData: Record<Locale, LinksContent> = {
+  en: {
+    pageTitle: 'LINKS',
+    desc: 'Places on the web worth visiting. Updated whenever I find something good.',
+    categories: [
+      {
+        name: 'WORK',
+        links: [
+          { title: 'Right Code', url: 'https://www.right.codes/dashboard' },
+          { title: 'AI派', url: 'https://api.aipaibox.com/console/log' },
+        ],
+      },
+      {
+        name: 'GOOGLE',
+        links: [
+          { title: 'Google', url: 'https://www.google.com.hk/webhp?hl=zh-CN&sourceid=cnhp&gws_rd=ssl' },
+          { title: 'Gmail 收件箱', url: 'https://mail.google.com/mail/u/2/#inbox' },
+          { title: 'Google 翻译', url: 'https://translate.google.com.hk/?hl=zh-CN&tab=TT&sl=auto&tl=zh-CN&op=translate' },
+          { title: 'Google Gemini', url: 'https://gemini.google.com/u/1/app' },
+        ],
+      },
+      {
+        name: 'BROWSE',
+        links: [
+          { title: 'Bilibili', url: 'http://bilibili.com/' },
+          { title: '山口大学', url: 'https://www.yamaguchi-u.ac.jp/' },
+          { title: '维基百科', url: 'https://zh.wikipedia.org/wiki/Wikipedia:%E9%A6%96%E9%A1%B5' },
+          { title: 'YouTube', url: 'https://youtube.com/' },
+          { title: 'Cloudflare Workers & Pages', url: 'https://dash.cloudflare.com/e1e6c685878ee5f51e16bb5e2cfa9654/workers-and-pages' },
+        ],
+      },
+      {
+        name: 'MISC',
+        links: [
+          { title: '阿虚', url: 'https://axutongxue.com/' },
+          { title: 'Bangumi', url: 'https://bangumi.tv/' },
+          { title: '萌娘百科', url: 'http://mzh.moegirl.org.cn/Mainpage' },
+          { title: 'SCP', url: 'http://scp-wiki-cn.wikidot.com/' },
+          { title: 'Doyoudo', url: 'https://www.doyoudo.com/resources' },
+          { title: 'Apple (中国大陆)', url: 'https://apple.cn/' },
+          { title: '大小写转换器', url: 'https://www.iamwawa.cn/daxiaoxie.html' },
+          { title: '配色网站 - 知乎', url: 'https://www.zhihu.com/question/299730272/answer/1171987482' },
+          { title: 'flysheep资源避难所', url: 'http://flysheep.ys168.com/' },
+          { title: '学府图书馆', url: 'http://www.xue1888.com/' },
+          { title: '3DMGAME', url: 'https://bbs.3dmgame.com/forum.php' },
+          { title: '萌娘百科 (桌面版)', url: 'https://zh.moegirl.org.cn/index.php?title=Mainpage&mobileaction=toggle_view_desktop' },
+          { title: '拉康 Z-Library', url: 'https://zh.fr1lib.org/s/%E6%8B%89%E5%BA%B7?' },
+          { title: 'Convertio', url: 'https://convertio.co/zh/flv-mp4/' },
+          { title: 'Switch520', url: 'https://fourpetal.com/' },
+          { title: 'Switch520 (new)', url: 'https://xxxxx520.com/' },
+          { title: 'Picrew', url: 'https://picrew.me/image_maker/1225542' },
+          { title: 'Gmail (副)', url: 'https://mail.google.com/mail/u/0/#inbox' },
+          { title: '有道文档翻译', url: 'https://pdf.youdao.com/docview.html?key=28D452B426934C52B1AF2C62E8D0AB16&from=en&to=zh-CHS&src=fanyiweb&isUseTerm=1&mode=PICMODE' },
+          { title: '大学物理通知 - CQUT', url: 'https://www.cqut.edu.cn/info/1103/44545.htm' },
+          { title: '游戏快车', url: 'https://gamecar.vip/' },
+          { title: '游戏加速器百宝箱', url: 'https://www.jsqcdk.com/' },
+          { title: '甲方叭叭', url: 'https://jiafangbb.com/' },
+          { title: '银河录像局', url: 'https://nf.video/' },
+          { title: 'Lumia 1020 漫游指南', url: 'https://sspai.com/post/106467' },
+          { title: 'Neumorphism CSS', url: 'https://design.dev/tools/neumorphism/' },
+        ],
+      },
+      {
+        name: 'NEOWEB',
+        links: [
+          { title: 'Neocities', url: 'https://neocities.org/' },
+          { title: 'v0 Templates', url: 'https://v0.app/templates' },
+          { title: 'React Bits', url: 'https://www.reactbits.dev/' },
+          { title: 'Originkit', url: 'https://www.originkit.dev/' },
+          { title: 'Crow Queen', url: 'https://crow-queen.com/' },
+          { title: 'Frutiger Aero Archive', url: 'https://frutigeraeroarchive.org/' },
+          { title: 'unicodeangel', url: 'https://unicodeangel.neocities.org/' },
+          { title: "Lilith's Lair", url: 'https://lilithdev.neocities.org/' },
+          { title: '基奥芬之家', url: 'https://mileshouse.neocities.org/' },
+          { title: 'Xx wElCoMe xX', url: 'https://xxstephsroomxx.neocities.org/' },
+          { title: 'under my rock', url: 'https://bobean.neocities.org/' },
+          { title: 'Winbows XP', url: 'https://winbows.neocities.org/' },
+          { title: "Kallistero's Project", url: 'https://kallistero.neocities.org/' },
+          { title: 'KWSX Radio', url: 'https://radio.kwsx.online/' },
+        ],
+      },
+    ],
+  },
+  zh: {
+    pageTitle: 'LINKS',
+    desc: '值得一访的网络角落，随时更新。',
+    categories: [
+      { name: 'PLACEHOLDER', links: [{ title: '—', url: '#', desc: '书签将在这里展示' }] },
+    ],
+  },
+  ja: {
+    pageTitle: 'LINKS',
+    desc: '訪れる価値のあるウェブの場所。良いものを見つけたら随時更新。',
+    categories: [
+      { name: 'PLACEHOLDER', links: [{ title: '—', url: '#', desc: 'ブックマークはここに' }] },
+    ],
+  },
+};
+
 export const nav: Record<Locale, NavContent> = {
   en: {
     handle: '@kailun.me',
@@ -62,7 +178,7 @@ export const nav: Record<Locale, NavContent> = {
       { label: 'ABOUT',    href: '/zh/about' },
       { label: 'PROJECTS', href: '/zh/projects' },
       { label: 'BLOG',     href: '/zh/blog' },
-      { label: 'LINKS',    href: '/zh/links' },
+      { label: 'LINKS',    href: '/links' },
     ],
   },
   ja: {
@@ -72,7 +188,7 @@ export const nav: Record<Locale, NavContent> = {
       { label: 'ABOUT',    href: '/ja/about' },
       { label: 'PROJECTS', href: '/ja/projects' },
       { label: 'BLOG',     href: '/ja/blog' },
-      { label: 'LINKS',    href: '/ja/links' },
+      { label: 'LINKS',    href: '/links' },
     ],
   },
 };
